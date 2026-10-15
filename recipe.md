@@ -50,46 +50,63 @@ uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
 _Also design the interface of each class in more detail._
 
 ```python
-class MusicLibrary:
+class Car:
     # User-facing properties:
     #   tracks: list of instances of Track
 
     def __init__(self):
         pass # No code here yet
 
-    def add(self, track):
+    def add_tyre(self, track):
         # Parameters:
         #   track: an instance of Track
         # Side-effects:
         #   Adds the track to the tracks property of the self object
         pass # No code here yet
 
-    def search_by_title(self, keyword):
+    def record_reading(self, position, pressure, date_taken, tread_depth):
         # Parameters:
-        #   keyword: string
+        #   position: string
+        #   pressure: int
+        #   date_taken: datetime
+        #   tread_depth: float
         # Returns:
-        #   A list of the Track objects that have titles that include the keyword
+        #   none
         pass # No code here yet
 
+    def record_summary(self):
+        # Parameters:
+        #   none
+        # Returns:
+        #   A list of all the details of the tyres
+        pass
 
-class Track:
+
+class Tyre:
     # User-facing properties:
     #   title: string
     #   artist: string
 
-    def __init__(self, title, artist):
+    def __init__(self, position):
         # Parameters:
-        #   title: string
-        #   artist: string
+        #   position: string
+        #   readings: list
         # Side-effects:
-        #   Sets the title and artist properties
+        #   initialises tyres
         pass # No code here yet
+    
+    def add_reading(self, reading):
+        pass
 
     def format(self):
         # Returns:
         #   A string of the form "TITLE by ARTIST"
         pass # No code here yet
 
+class Reading:
+
+    def __init__(self):
+        pass
 ```
 
 ## 3. Create Examples as Integration Tests
