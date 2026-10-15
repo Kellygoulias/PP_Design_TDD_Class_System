@@ -93,6 +93,7 @@ class Tyre:
         # Parameters:
         #   Tread-depth: Float
         #   Pressure: Int
+        #   Tyre_position: None
         # Side-effects:
         #   creates a tire with properties passed in
         pass # No code here yet
@@ -107,14 +108,14 @@ class Tyre:
 
 class Reading:
 
-    def __init__(self, date, position, pressure, date_taken, tread_depth):
+    def __init__(self, date, position, pressure, tread_depth):
         record_details = [
                     date: datetime,
                     tyre: Tyre instance,
                     position: string,
                     pressure: int,
                     tread_depth: float
-    
+        ]
 
 ```
 
@@ -146,6 +147,18 @@ tyre2 = Tyre(12.5, 50)
 tyre3 = Tyre(12.5, 50)
 tyre4 = Tyre(12.5, 50)
 car.add(tyre1, "front-left")
+car.add(tyre2, "front-right")
+car.add(tyre3, "back-left")
+car.add(tyre4, "back-right")
+reading1 = Reading("15/10/2026", tyre1)
+reading2 = Reading("15/10/2026", tyre2)
+reading3 = Reading("15/10/2026", tyre3)
+reading4 = Reading("15/10/2026", tyre4)
+car.record_reading(reading1)
+car.record_reading(reading2)
+car.record_reading(reading3)
+car.record_reading(reading4)
+assert car.list_of_readings == [reading1, reading2, reading3, reading4]
 ```
 
 ## 4. Create Examples as Unit Tests
@@ -157,11 +170,18 @@ a more granular level of detail._
 # EXAMPLE
 
 """
-Given a track with a title and an artist
-We see the title reflected in the title property
+Given a single car instance and nothing else
+At at_a_glance method returns None
 """
-track = Track("Carte Blanche", "Veracocha")
-track.title # => "Carte Blanche"
+car = Car()
+assert not car.at_a_glance()
+
+"""
+Given a single car instance and nothing else
+At record_summary() method returns empty list
+"""
+car = Car()
+assert not car.at_a_glance()
 ```
 
 _Encode each example as a test. You can add to the above list as you go._
