@@ -51,25 +51,24 @@ _Also design the interface of each class in more detail._
 
 ```python
 class Car:
-    # User-facing properties:
-    #   tracks: list of instances of Track
 
     def __init__(self):
-        pass # No code here yet
+        #_tyre_positions : dict {front left: { latest reading: ,
+                                                date_of_latest_reading: date,
+                                                }}
+        # list_of_readings : List of reading instances
 
-    def add_tyre(self, track):
+    def add_tyre(self, tyre, position):
         # Parameters:
-        #   track: an instance of Track
+        #   tyre : Tyre instance
+        #   position: string eg: "front-left"
         # Side-effects:
         #   Adds the track to the tracks property of the self object
         pass # No code here yet
 
-    def record_reading(self, position, pressure, date_taken, tread_depth):
+    def record_reading(self, reading):
         # Parameters:
-        #   position: string
-        #   pressure: int
-        #   date_taken: datetime
-        #   tread_depth: float
+        #   reading instance
         # Returns:
         #   none
         pass # No code here yet
@@ -78,35 +77,45 @@ class Car:
         # Parameters:
         #   none
         # Returns:
-        #   A list of all the details of the tyres
+        #   A list of all the details of the tyres readings
         pass
+
+    def at_a_glance(self):
+        #params / n/a
+        #Return : return tyre_positions
+
 
 
 class Tyre:
     # User-facing properties:
-    #   title: string
-    #   artist: string
-
-    def __init__(self, position):
+    #   
+    def __init__(self, tread_depth, pressure):
         # Parameters:
-        #   position: string
-        #   readings: list
+        #   Tread-depth: Float
+        #   Pressure: Int
         # Side-effects:
-        #   initialises tyres
+        #   creates a tire with properties passed in
         pass # No code here yet
     
-    def add_reading(self, reading):
-        pass
+    # def add_reading(self, reading):
+    #     pass
 
-    def format(self):
-        # Returns:
-        #   A string of the form "TITLE by ARTIST"
-        pass # No code here yet
+    # def format(self):
+    #     # Returns:
+    #     #   A string of the form "TITLE by ARTIST"
+    #     pass # No code here yet
 
 class Reading:
 
-    def __init__(self):
-        pass
+    def __init__(self, date, position, pressure, date_taken, tread_depth):
+        record_details = [
+                    date: datetime,
+                    tyre: Tyre instance,
+                    position: string,
+                    pressure: int,
+                    tread_depth: float
+    
+
 ```
 
 ## 3. Create Examples as Integration Tests
@@ -118,16 +127,11 @@ combinations that reflect the ways in which the system will be used._
 # EXAMPLE
 
 """
-Given a library
-When we add two tracks
-We see those tracks reflected in the tracks list
+Given a car, add 4 tyres
 """
-library = MusicLibrary()
-track_1 = Track("Carte Blanche", "Veracocha")
-track_2 = Track("Synaesthesia", "The Thrillseekers")
-library.add(track_1)
-library.add(track_2)
-library.tracks # => [track_1, track_2]
+car = Car
+tyre1 = Tyre(tread_depth, pressure)
+
 ```
 
 ## 4. Create Examples as Unit Tests
