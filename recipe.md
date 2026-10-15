@@ -127,11 +127,25 @@ combinations that reflect the ways in which the system will be used._
 # EXAMPLE
 
 """
-Given a car, add 4 tyres
+Given a car, add 1 tyre
 """
 car = Car
-tyre1 = Tyre(tread_depth, pressure)
+tyre1 = Tyre(12.5, 50)
+car.add(tyre1, "front-left")
+# tyre1 = Tyre(12.3, 51)
+# tyre1 = Tyre(12.2, 52)
+# tyre1 = Tyre(12.1, 50)
+assert car._tyre_positions == {"front-left": {pressure: 50, tread_depth: 12.5}}
 
+"""
+Given a car, add 4 tyre, make a reading.
+"""
+car = Car
+tyre1 = Tyre(12.5, 50)
+tyre2 = Tyre(12.5, 50)
+tyre3 = Tyre(12.5, 50)
+tyre4 = Tyre(12.5, 50)
+car.add(tyre1, "front-left")
 ```
 
 ## 4. Create Examples as Unit Tests
